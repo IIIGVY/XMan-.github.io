@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+        }
+
+        img {
+            width: 500px;
+        }
+
+        video {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <video src="media/mi.mp4" controls></video> -->
+    <input type="file" name="" id="" multiple>
+    <button>提交</button>
+    <script>
+        var obj = [];
+        var file_vi = document.querySelector('input');
+        var btn = document.querySelector('button');
+
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();// 阻止事件冒泡
+
+            for (var i = 0; i < file_vi.files.length; i++) {
+                var div = document.createElement('div');
+                document.body.appendChild(div);
+                var vid = document.createElement('video');
+                vid.controls = true;
+                vid.src = URL.createObjectURL(file_vi.files[i]);
+                div.appendChild(vid);
+                // console.log(URL.createObjectURL(file_vi.files[i]));
+            }
+        })
+    </script>
+</body>
+
+</html>
